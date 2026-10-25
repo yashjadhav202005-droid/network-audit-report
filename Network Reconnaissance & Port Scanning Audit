@@ -1,0 +1,24 @@
+Nmap Reconnaissance Results
+An aggressive TCP SYN scan alongside service version detection was executed to enumerate open ports
+and identify the underlying daemon configurations. The output revealed a heavily exposed attack surface
+running legacy services.
+
+Starting Nmap 7.93 ( https://nmap.org ) Nmap scan report for 192.168.56.101 Host
+is up (0.00042s latency). Not shown: 995 closed tcp ports (reset) PORT STATE SERVICE
+VERSION 21/tcp open ftp vsftpd 2.3.4 22/tcp open ssh OpenSSH 4.7p1 Debian 8ubuntu1
+(protocol 2.0) 23/tcp open telnet Linux telnetd 80/tcp open http Apache httpd 2.2.8
+((Ubuntu) DAV/2) 445/tcp open netbios-s Samba smbd 3.X - 4.X (workgroup: WORKGROUP) MAC
+Address: 08:00:27:A3:B2:C1 (Oracle VirtualBox virtual NIC) Device type: general purpose
+Running: Linux 2.6.X OS CPE: cpe:/o:linux:linux_kernel:2.6 OS details: Linux 2.6.9 -
+2.6.33 Nmap done: 1 IP address (1 host up) scanned in 11.34 seconds
+
+Packet Capture Evidence (Simulated)
+No. Time Source Destination Protocol Info
+1042 14.0023 192.168.56.10 192.168.56.101 TCP
+52410 → 21 [SYN] Seq=0 Win=64240
+Len=0
+1045 14.0531 192.168.56.101 192.168.56.10 FTP Response: 220 (vsFTPd 2.3.4)
+1068 15.2210 192.168.56.10 192.168.56.101 FTP Request: USER admin
+1072 15.8904 192.168.56.10 192.168.56.101 FTP Request: PASS s3cr3tP@ssw0rd!
+1075 16.1022 192.168.56.101 192.168.56.10 FTP Response: 230 Login successful.
+1180 18.4501 192.168.56.10 192.168.56.101 TELNET Telnet Data ... "root"
